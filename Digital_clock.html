@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Digital Clock</title>
+    <style>
+      .b1 {
+        font-size: 50px;
+        background-color: rgb(240, 36, 36);
+        border-radius: 10px;
+        color: white;
+        margin: 10px;
+        padding: 10px;
+      }
+      .b2 {
+        font-size: 50px;
+        background-color: rgb(11, 199, 11);
+        border-radius: 10px;
+        color: white;
+        margin: 10px;
+        padding: 10px;
+      }
+      .b3 {
+        font-size: 50px;
+        background-color: rgb(211, 164, 11);
+        border-radius: 10px;
+        color: white;
+        margin: 10px;
+        padding: 10px;
+      }
+      .p {
+        border: 1px solid darkblue;
+        box-shadow: 2px 2px 2px 2px;
+        padding: 10px;
+        font-size: 30px;
+        word-spacing: 100px;
+        display: inline;
+        border-radius: 10px;
+      }
+    </style>
+  </head>
+  <body>
+    <button id="b1"></button>
+    <button id="b2"></button>
+    <button id="b3"></button>
+    <br />
+    <br />
+    <br />
+    <p></p>
+
+    <script>
+      document.body.style.backgroundColor = "black";
+      document.body.style.color = "white";
+      document.body.style.margin = "200px";
+      let b1 = document.querySelector("#b1");
+      let b2 = document.querySelector("#b2");
+      let b3 = document.querySelector("#b3");
+      b1.classList.add("b1");
+      b2.classList.add("b2");
+      b3.classList.add("b3");
+      document.body.style.textAlign = "center";
+      let date = new Date();
+      setInterval(() => {
+        let date = new Date();
+        let h = date.getHours();
+        let m = date.getMinutes();
+        let s = date.getSeconds();
+        let timeZone;
+        b1.innerHTML = `${h}`;
+        b2.innerHTML = `${m}`;
+        b3.innerHTML = `${s}`;
+        let day = date.getDay();
+        let dt = date.getDate();
+        let mon = date.getMonth() + 1;
+        let year = date.getFullYear();
+        if (day === 0) {
+          day = "Monday";
+        } else if (day === 1) {
+          day = "Tuesday";
+        } else if (day === 2) {
+          day = "Wednesday";
+        } else if (day === 3) {
+          day = "Thursday";
+        } else if (day === 4) {
+          day = "Friday";
+        } else if (day === 5) {
+          day = "Saturday";
+        } else if (day === 6) {
+          day = "Sunday";
+        }
+        let fullDate = `${dt}/${mon}/${year}`;
+        let p = document.querySelector("p");
+        p.classList.add("p");
+        if (h > 12) {
+          timeZone = "PM";
+        } else {
+          timeZone = "AM";
+        }
+        p.innerHTML = `${day}  ${fullDate}  ${timeZone}`;
+      }, 1000);
+    </script>
+  </body>
+</html>

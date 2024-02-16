@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Todo list in Local Storage</title>
+    <link rel="stylesheet" href="bootstrap(5.3).css" />
+  </head>
+  <body>
+    <h1>Todo List</h1>
+    <br />
+
+    <input type="text" placeholder="Text to add" />
+
+    <br />
+    <br />
+    <button id="btn1" class="btn btn-primary">Add</button>
+    <br />
+    <h2>List</h2>
+
+    <script>
+      let bd = document.querySelector("body");
+      bd.style.backgroundColor = "lightblue";
+      bd.style.textAlign = "center";
+      let key = 1;
+      let btn1 = document.querySelector("button");
+      let input = document.querySelector("input");
+      btn1.addEventListener("click", function () {
+        let div = document.createElement("div");
+        div.style.backgroundColor = "green";
+        localStorage.setItem(`${key}`, `${input.value}`);
+        div.innerHTML = `${key}: ${input.value}`;
+        bd.append(div);
+        div.style.height = "100px";
+        div.style.width = "200px";
+        let btn2 = document.createElement("button");
+        btn2.className = "btn btn-danger";
+        btn2.innerHTML = "delete";
+        btn2.style.margin = "15px";
+        div.append(btn2);
+        input.value = "";
+        btn2.addEventListener("click", function () {
+          --key;
+          localStorage.removeItem(key);
+          div.innerHTML = "";
+          div.style.backgroundColor = "lightblue";
+        });
+        key++;
+      });
+    </script>
+  </body>
+</html>

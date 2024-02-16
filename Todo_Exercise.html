@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <h1>Todo List</h1>
+
+    <ul>
+      <li>"new"- Add a Todo</li>
+      <li>"list"- List All Todos</li>
+      <li>"delete"- Remove Specific Todo</li>
+      <li>"quit"- Quit App</li>
+    </ul>
+    <script>
+      let ask = prompt("What would you like to do?");
+      let list = [];
+
+      while (ask.toLowerCase() !== "quit" && ask.toLowerCase() !== "q") {
+        if (ask.toLowerCase() === "new") {
+          ask = prompt("Enter a new todo:");
+          list.push(ask);
+          console.log(`${ask} added in todo`);
+          ask = prompt("What would you like to do?");
+        } else if (ask.toLowerCase() === "list") {
+          console.log("*************************");
+          for (let i in list) {
+            console.log(i + ":" + list[i]);
+          }
+          console.log("**************************");
+          ask = prompt("What would you like to do?");
+        } else if (ask.toLowerCase() === "delete") {
+          ask = parseInt(prompt("which index you want to delete?"));
+          list.splice(ask, 1);
+          console.log("******************************");
+          console.log("todo removed");
+          console.log("******************************");
+
+          ask = prompt("What would you like to do?");
+        } else {
+          ask = prompt("What would you like to do?");
+        }
+      }
+
+      alert("You quit!!");
+    </script>
+  </body>
+</html>

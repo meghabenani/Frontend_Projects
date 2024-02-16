@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <h1>BMI Calculator</h1>
+    <form action="m.php">
+      <label for="h"
+        >Height in CM:
+        <input type="text" id="h" />
+      </label>
+
+      <br />
+      <br />
+
+      <label for="w"
+        >Weight in KG:
+        <input type="text" id="w" />
+      </label>
+
+      <br />
+      <br />
+      <p id="result"></p>
+      <div>
+        <input type="submit" value="Calculate" id="btn" />
+      </div>
+    </form>
+
+    <h3>BMI Weight Guide</h3>
+    <p>Under Weight = Less than 18.6</p>
+    <p>Normal Range = 18.6 and 24.9</p>
+    <p>Overweight = Greater than 24.9</p>
+
+    <script>
+      let body = document.querySelector("body");
+      body.style.textAlign = "center";
+      let re = document.querySelector("#result");
+      let w = document.querySelector("#w");
+      let h = document.querySelector("#h");
+
+      let form = document.querySelector("form");
+      form.addEventListener("submit", function (e) {
+        e.preventDefault();
+        let hValue = parseInt(h.value);
+        let wValue = parseInt(w.value);
+        if (hValue === "" || hValue < 0 || isNaN(hValue)) {
+          re.innerHTML = "Please enter a valid height";
+        } else if (wValue === "" || wValue < 0 || isNaN(wValue)) {
+          re.innerHTML = "Please enter a valid weight";
+        } else {
+          let result = (wValue / (hValue * hValue)) * 10000;
+          if (result < 18.6) {
+            re.innerHTML = `Underweight: ${result}`;
+          }
+          if (result > 18.6 && result < 24.9) {
+            re.innerHTML = `Normal Range: ${result}`;
+          }
+          if (result > 24.9) {
+            re.innerHTML = `Overweight: ${result}`;
+          }
+        }
+      });
+    </script>
+  </body>
+</html>

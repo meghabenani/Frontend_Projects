@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Score Keeper Ping Pong</title>
+    <link rel="stylesheet" href="bootstrap(5.3).css" />
+  </head>
+  <body>
+    <div class="card" style="width: 35rem; margin: auto; margin-top: 15px">
+      <img
+        src="https://images.unsplash.com/photo-1534158914592-062992fbe900?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTB8fHBpbmclMjBwb25nfGVufDB8fDB8fHww&auto=format&fit=crop&w=500&q=60"
+        alt=""
+        class="img-top"
+      />
+      <div class="card-header" style="font-weight: bold">
+        Ping Pong Score Keeper
+      </div>
+      <div class="card-body">
+        <span class="h1" style="padding: 2px" id="p1">0</span>
+        <span class="h1" style="padding: 2px">to</span>
+        <span class="h1" style="padding: 2px" id="p2">0</span>
+
+        <p style="padding: 3px">Use the buttons below to keep score</p>
+
+        <p class="h5" style="font-weight: bold">
+          Playing To
+          <select
+            id="player"
+            class="rounded-pill"
+            style="
+              width: 70px;
+              height: auto;
+              text-align: center;
+              border: 1px solid lightseagreen;
+            "
+          >
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5</option>
+            <option value="6">6</option>
+            <option value="7">7</option>
+            <option value="8">8</option>
+            <option value="9">9</option>
+            <option value="10">10</option>
+            <option value="11">11</option>
+          </select>
+        </p>
+
+        <p class="d-flex" style="margin-top: 30px">
+          <button
+            class="btn btn-lg btn-info"
+            id="b1"
+            style="margin: 1px; width: 30rem; height: 3rem"
+          >
+            +1 Player One
+          </button>
+          <button
+            class="btn btn-lg btn-primary"
+            id="b2"
+            style="margin: 1px; width: 30rem; height: 3rem"
+          >
+            +1 Player Two
+          </button>
+          <button
+            type="reset"
+            class="btn btn-danger btn-lg"
+            id="re"
+            style="margin: 1px; width: 20rem; height: 3rem"
+          >
+            Reset
+          </button>
+        </p>
+      </div>
+    </div>
+
+    <script>
+      let b1 = document.querySelector("#b1");
+      let b2 = document.querySelector("#b2");
+      let re = document.querySelector("#re");
+      let p1 = document.querySelector("#p1");
+      let p2 = document.querySelector("#p2");
+      let sel = document.querySelector("#player");
+      let x = parseInt(sel.value);
+      let gameOver = false;
+      b1.style.cursor = "pointer";
+      b2.style.cursor = "pointer";
+      let player1 = parseInt(p1.innerHTML);
+      let player2 = parseInt(p2.innerHTML);
+
+      sel.addEventListener("change", function () {
+        gameOver = false;
+        x = parseInt(sel.value);
+        player1 = 0;
+        p1.innerHTML = player1;
+        player2 = 0;
+        p2.innerHTML = player2;
+        b1.disabled = false;
+        b2.disabled = false;
+        p1.style.color = "black";
+        p2.style.color = "black";
+      });
+
+      b1.addEventListener("click", function () {
+        if (!gameOver) {
+          player1++;
+          p1.innerHTML = player1;
+          if (x === player1) {
+            gameOver = true;
+            p1.style.color = "green";
+            p2.style.color = "red";
+            b1.disabled = true;
+            b2.disabled = true;
+          }
+        }
+      });
+      b2.addEventListener("click", function () {
+        if (!gameOver) {
+          player2++;
+          p2.innerHTML = player2;
+        }
+        if (x === player2) {
+          gameOver = true;
+          p2.style.color = "green";
+          p1.style.color = "red";
+          b2.disabled = true;
+          b1.disabled = true;
+        }
+      });
+      re.addEventListener("click", function () {
+        gameOver = false;
+        player1 = 0;
+        p1.innerHTML = player1;
+        player2 = 0;
+        p2.innerHTML = player2;
+        b1.disabled = false;
+        b2.disabled = false;
+        p1.style.color = "black";
+        p2.style.color = "black";
+      });
+    </script>
+  </body>
+</html>

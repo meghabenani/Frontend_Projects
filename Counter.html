@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      .h1 {
+        font-size: 40px;
+        font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
+          "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
+        margin: 4px;
+      }
+      .p {
+        font-size: 50px;
+        font-weight: bold;
+        margin: 4px;
+      }
+      .btn {
+        font-size: 25px;
+        padding: 10px;
+        border: 2px solid black;
+        border-radius: 10px;
+        margin: 10px;
+        color: rgb(255, 255, 255);
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Counter App</h1>
+    <p>0</p>
+    <div>
+      <button id="yellow">Decrement</button>
+      <button id="red">Reset</button>
+      <button id="green">Increment</button>
+    </div>
+
+    <script>
+      document.querySelector("h1").classList.add("h1");
+      document.body.style.margin = "150px";
+      document.body.style.textAlign = "center";
+      let div = document.querySelector("div");
+      let btn = document.querySelectorAll("button");
+      for (let i of btn) {
+        i.classList.add("btn");
+      }
+      let p = document.querySelector("p");
+      p.classList.add("p");
+      p.value = parseInt(0);
+      div.addEventListener("click", function () {
+        if (p.value > 0) {
+          p.style.color = "green";
+        } else if (p.value < 0) {
+          p.style.color = "red";
+        } else {
+          p.style.color = "black";
+        }
+      });
+      let y = document.querySelector("#yellow");
+      y.style.backgroundColor = "rgba(255,170,30)";
+      let r = document.querySelector("#red");
+      r.style.backgroundColor = "red";
+      let g = document.querySelector("#green");
+      g.style.backgroundColor = "green";
+      y.addEventListener("click", function () {
+        p.value = p.value - 1;
+        p.innerHTML = p.value;
+      });
+      r.addEventListener("click", function () {
+        p.value = 0;
+        p.innerHTML = p.value;
+      });
+      g.addEventListener("click", function () {
+        p.value = p.value + 1;
+        p.innerHTML = p.value;
+      });
+    </script>
+  </body>
+</html>

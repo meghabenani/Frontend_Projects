@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <h1>Guess Game</h1>
+
+    <script>
+      let max = parseInt(prompt("Enter a max number"));
+
+      while (!max) {
+        max = parseInt(prompt("Enter a valid number"));
+      }
+
+      let actual = Math.floor(Math.random() * max) + 1;
+
+      let attemps = 1;
+
+      let guess = prompt("Enter your first guess");
+
+      while (parseInt(guess) !== actual) {
+        if (guess === "q") {
+          break;
+        }
+        if (guess < actual) {
+          attemps++;
+          guess = prompt("Too low try again");
+        } else if (guess > actual) {
+          attemps++;
+          guess = prompt("Too high try again");
+        } else {
+          attemps++;
+          guess = prompt("Invalid try again");
+        }
+      }
+      if (guess == "q") {
+        alert("You quit!!");
+      } else {
+        alert(`You guessed in ${attemps} attemps`);
+      }
+    </script>
+  </body>
+</html>

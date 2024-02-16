@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      let guess = 5;
+      let compPoint = 0;
+      let userPoint = 0;
+      let choice = ["s", "w", "g"];
+      let rand = Math.floor(Math.random() * 3);
+      let compChoice = choice[rand];
+      let userChoice;
+      while (guess != 0) {
+        userChoice = prompt(`Enter s,w,g ${guess} chance left`);
+        guess--;
+        if (userChoice === compChoice) {
+          alert("Tie");
+        } else if (userChoice === "s" && compChoice === "w") {
+          alert("UserWins");
+          userPoint++;
+        } else if (userChoice === "w" && compChoice === "g") {
+          alert("UserWins");
+          userPoint++;
+        } else if (userChoice === "g" && compChoice === "s") {
+          alert("UserWins");
+          userPoint++;
+        } else if (compChoice === "s" && userChoice === "w") {
+          alert("CompWins");
+          compPoint++;
+        } else if (compChoice === "w" && userChoice === "g") {
+          alert("CompWins");
+          compPoint++;
+        } else if (compChoice === "g" && userChoice === "s") {
+          alert("CompWins");
+          compPoint++;
+        } else {
+          alert("Enter a valid choice");
+          guess++;
+        }
+      }
+      if (userPoint > compPoint) {
+        alert(`YOU WINS`);
+      } else if (compPoint > userPoint) {
+        alert("COMPUTER WINS");
+      } else {
+        alert("TIE..!!");
+      }
+    </script>
+  </body>
+</html>

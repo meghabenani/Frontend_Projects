@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="bootstrap(5.3).css" />
+  </head>
+  <body>
+    <div class="container">
+      <div class="card m-auto" style="width: 35rem">
+        <img
+          src="https://images.unsplash.com/photo-1534158914592-062992fbe900?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTB8fHBpbmclMjBwb25nfGVufDB8fDB8fHww&auto=format&fit=crop&w=500&q=60"
+          alt=""
+          class="card-img-top"
+        />
+        <div class="card-header" style="font-weight: bold">
+          Ping Pong Score Keeper
+        </div>
+        <div class="card-body">
+          <h1><span id="p1">0</span> to <span id="p2">0</span></h1>
+          <p>Use the buttons below to keep score</p>
+
+          <span style="font-weight: bold; font-size: large"
+            >Playing To
+            <select
+              id="playerNum"
+              class="rounded-pill"
+              style="
+                padding: 4px;
+                margin: 2px;
+                width: 70px;
+                text-align: center;
+                border: 1px solid lightseagreen;
+              "
+            >
+              <option value="3">3</option>
+              <option value="4">4</option>
+              <option value="5">5</option>
+              <option value="6">6</option>
+              <option value="7">7</option>
+              <option value="8">8</option>
+              <option value="9">9</option>
+            </select>
+          </span>
+          <br />
+          <br />
+          <div>
+            <button
+              class="btn btn-lg btn-info"
+              id="b1"
+              style="width: 10rem; height: 50px"
+            >
+              +1 Player One
+            </button>
+            <button
+              class="btn btn-lg btn-primary"
+              id="b2"
+              style="width: 10rem; height: 50px"
+            >
+              +1 Player Two
+            </button>
+            <button
+              class="btn btn-lg btn-danger"
+              id="re"
+              style="width: 10rem; height: 50px"
+            >
+              Reset
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      let b1 = document.querySelector("#b1");
+      let b2 = document.querySelector("#b2");
+      let re = document.querySelector("#re");
+      let sel = document.querySelector("#playerNum");
+      let x = parseInt(3);
+      let p1 = document.querySelector("#p1");
+      let p2 = document.querySelector("#p2");
+      let p1score = parseInt(p1.innerHTML);
+      let p2score = parseInt(p2.innerHTML);
+
+      sel.addEventListener("change", function () {
+        x = parseInt(sel.value);
+        p1score = 0;
+        p1.innerHTML = p1score;
+        p1.style.color = "black";
+        p2.style.color = "black";
+        p2score = 0;
+        p2.innerHTML = p2score;
+        b1.disabled = false;
+        b2.disabled = false;
+      });
+      b1.addEventListener("click", function () {
+        if (x !== p1score) {
+          p1score++;
+          p1.innerHTML = p1score;
+        }
+        if (x === p1score) {
+          p1.style.color = "green";
+          p2.style.color = "red";
+          b1.disabled = true;
+          b2.disabled = true;
+        }
+      });
+
+      b2.addEventListener("click", function () {
+        if (x !== p2score) {
+          p2score++;
+          p2.innerHTML = p2score;
+        }
+        if (x === p2score) {
+          p1.style.color = "red";
+          p2.style.color = "green";
+          b1.disabled = true;
+          b2.disabled = true;
+        }
+      });
+
+      re.addEventListener("click", function () {
+        p1score = 0;
+        p1.innerHTML = p1score;
+        p1.style.color = "black";
+        p2.style.color = "black";
+        p2score = 0;
+        p2.innerHTML = p2score;
+        b1.disabled = false;
+        b2.disabled = false;
+      });
+    </script>
+  </body>
+</html>

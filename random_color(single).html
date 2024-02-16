@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <h1>Change color</h1>
+    <button>Click Me!!</button>
+
+    <script>
+      document.body.style.textAlign = "center";
+      let btn = document.querySelector("button");
+
+      let h1 = document.querySelector("h1");
+
+      btn.addEventListener("click", function () {
+        let r = Math.floor(Math.random() * 255) + 1;
+        let g = Math.floor(Math.random() * 255) + 1;
+        let b = Math.floor(Math.random() * 255) + 1;
+
+        let rgb = `rgb(${r},${g},${b})`;
+        document.body.style.background = rgb;
+
+        h1.innerHTML = rgb;
+        if (r <= 50 || g <= 30 || b <= 80) {
+          h1.style.color = "white";
+        } else {
+          h1.style.color = "black";
+        }
+      });
+    </script>
+  </body>
+</html>

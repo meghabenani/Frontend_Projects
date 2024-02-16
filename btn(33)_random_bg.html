@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body></body>
+
+  <script>
+    for (let i = 1; i <= 33; i++) {
+      let btn = document.createElement("button");
+      btn.innerHTML = "Click me!!";
+      document.body.append(btn);
+      btn.style.margin = "4px";
+      btn.style.width = "100px";
+      btn.style.height = "100px";
+
+      btn.addEventListener("click", function () {
+        let r = Math.floor(Math.random() * 255) + 1;
+        let g = Math.floor(Math.random() * 255) + 1;
+        let b = Math.floor(Math.random() * 255) + 1;
+
+        let rgb = `rgb(${r},${g},${b})`;
+
+        this.style.backgroundColor = rgb;
+        this.style.border = "2px solid red";
+      });
+    }
+  </script>
+</html>

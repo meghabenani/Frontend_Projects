@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="bootstrap(5.3).css" />
+    <style>
+      div :nth-child(1) {
+        display: flex;
+        margin-top: 10px;
+      }
+      h1 {
+        margin-top: 10px;
+      }
+      .api {
+        background-color: lightblue;
+        text-align: center;
+        font-size: 20px;
+        margin-top: 15px;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Random Jokes Generator</h1>
+    <div>
+      <button class="btn btn-secondary mx-auto">Click me!!</button>
+    </div>
+    <div id="jokes"></div>
+    <script>
+      let h1 = document.querySelector("h1");
+      h1.style.backgroundColor = "lightpink";
+      h1.style.textAlign = "center";
+      let btn = document.querySelector("button");
+      let joke = document.querySelector("#jokes");
+      joke.classList.add("api");
+
+      let api = "https://official-joke-api.appspot.com/random_joke";
+      btn.addEventListener("click", function () {
+        fetch(api)
+          .then((j) => {
+            return j.json();
+          })
+          .then((value) => {
+            joke.innerHTML = `${value.setup} ==> ${value.punchline}`;
+          });
+      });
+    </script>
+  </body>
+</html>
