@@ -2,7 +2,7 @@ export let arr=[
     {
         id:1,
         img:"https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8M3x8cGVvcGxlfGVufDB8fDB8fHww",
-        name:"Bertie Yates",
+        name:"Bertie Yaites",
         years:"29 Years"
     },
     {
@@ -26,7 +26,7 @@ export let arr=[
     {
         id:5,
         img:"https://images.unsplash.com/photo-1524504388940-b1c1722653e1?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTZ8fHBlb3BsZXxlbnwwfHwwfHx8MA%3D%3D",
-        name:"Lola Gardener",
+        name:"Lola Garden",
         years:"29 Years"
     }
 ]
