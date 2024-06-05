@@ -12,7 +12,7 @@ export default function App() {
   let options = Object.keys(currencyInfo);
 
   useEffect(() => {
-    setConvertamount(amount * currencyInfo[to]);
+    setConvertamount(String(amount * currencyInfo[to]));
   });
 
   return (
