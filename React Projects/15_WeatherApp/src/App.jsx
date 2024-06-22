@@ -151,7 +151,15 @@ export default function App() {
         />
       </div>
 
-      <div className="fa-brands fa-github text-3xl fixed bottom-11 rounded-xl right-16"></div>
+      <div
+        className="fa-brands fa-github text-3xl fixed bottom-11 rounded-xl right-16"
+        onClick={() => {
+          window.open(
+            `https://github.com/meghabenani/Frontend_Projects/tree/master/React%20Projects/15_WeatherApp`,
+            "_blank"
+          );
+        }}
+      ></div>
     </div>
   );
 }
